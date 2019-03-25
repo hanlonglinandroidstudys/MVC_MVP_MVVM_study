@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="hanlonglin.com.mvvm_model.viewmodel.MainViewModel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txt_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@{viewModel.currentPlayer}"
+            android:textSize="20dp" />
+
+        <GridLayout
+            android:id="@+id/gridLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:columnCount="3"
+            android:rowCount="3">
+
+            <Button
+                android:id="@+id/btn00"
+                style="@style/cellStyle"
+                android:onClick="@{()->viewModel.onClickCellAt(0,0)}"
+                android:text='@{viewModel.cells["00"]}' />
+
+            <Button
+                android:id="@+id/btn01"
+                style="@style/cellStyle"
+                android:onClick="@{()->viewModel.onClickCellAt(0,1)}"
+                android:text='@{viewModel.cells["01"]}' />
+
+            <Button
+                android:id="@+id/btn02"
+                style="@style/cellStyle"
+                android:onClick="@{()->viewModel.onClickCellAt(0,2)}"
+                android:text='@{viewModel.cells["02"]}' />
+
+            <Button
+                android:id="@+id/btn10"
+                style="@style/cellStyle"
+                android:onClick="@{()->viewModel.onClickCellAt(1,0)}"
+                android:text='@{viewModel.cells["10"]}' />
+
+            <Button
+                android:id="@+id/btn11"
+                style="@style/cellStyle"
+                android:onClick="@{()->viewModel.onClickCellAt(1,1)}"
+                android:text='@{viewModel.cells["11"]}' />
+
+            <Button
+                android:id="@+id/btn12"
+                style="@style/cellStyle"
+                android:onClick="@{()->viewModel.onClickCellAt(1,2)}"
+                android:text='@{viewModel.cells["12"]}' />
+
+            <Button
+                android:id="@+id/btn20"
+                style="@style/cellStyle"
+                android:onClick="@{()->viewModel.onClickCellAt(2,0)}"
+                android:text='@{viewModel.cells["20"]}' />
+
+            <Button
+                android:id="@+id/btn21"
+                style="@style/cellStyle"
+                android:onClick="@{()->viewModel.onClickCellAt(2,1)}"
+                android:text='@{viewModel.cells["21"]}' />
+
+            <Button
+                android:id="@+id/btn22"
+                style="@style/cellStyle"
+                android:onClick="@{()->viewModel.onClickCellAt(2,2)}"
+                android:text='@{viewModel.cells["22"]}' />
+        </GridLayout>
+
+        <LinearLayout
+            android:id="@+id/li_finish"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="@{viewModel.winner==null?View.GONE:View.VISIBLE}">
+
+            <TextView
+                android:id="@+id/txt_winner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="10dp"
+                android:text="@{viewModel.winner}"
+                android:textSize="18dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="10dp"
+                android:text="赢了"
+                android:textSize="18dp" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

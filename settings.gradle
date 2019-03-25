@@ -1,0 +1,1 @@
+include ':app', ':normal', ':mvc_model', ':mvp_model', ':mvvm_model'
